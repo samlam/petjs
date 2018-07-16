@@ -1,0 +1,15 @@
+.idea/
+.nyc_output/
+.vscode/
+coverage/
+node_modules/
+.babelrc
+.eslint-autofix.json
+.eslintrc.json
+jsbuild.json
+*.log
+assets/
+src/
+test/
+log/
+documentation/

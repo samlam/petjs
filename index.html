@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>pet.js starter kit</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <style>
+    div {
+      padding-top: 15px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    }
+  </style>
+  <script>
+    document.project = document.project || {};
+    document.project.app = {
+      session: {
+        user:7383422,
+      }
+    };
+
+    document.project.app.page = document.project.app.page || [];
+    document.project.app.page.push({'interests':'books,baseball,football'});
+  </script>
+</head>
+
+<body app>
+  <hello hello-id="unique id of the handler" hello-title="world"></hello>
+
+
+  <script>
+    window.dataLayer = null
+
+    // loading the bundle and making sure we're not using cache
+    var rnd = (new Date()).getTime();
+    var b = document.createElement("script");
+    b.src = "./app.bundle.js?v=" + rnd;
+    b.type = "text/javascript";
+    document.body.appendChild(b);
+
+    var timer = setInterval(function() {
+      if (!document.project.app.version) return;
+
+      console.info(document.project.app)
+
+      clearInterval(timer);
+    },10)
+
+  </script>
+
+  <script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.24.4'><\/script>".replace("HOST", location.hostname));
+  //]]></script>
+</body>
+</html>
