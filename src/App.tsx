@@ -2,7 +2,6 @@ import { h, Component,render } from "preact";
 import { Props } from './models/Props';
 import { State } from './models/State';
 import { ITagHandler } from "./models/ITagHandler";
-//import { GtmListing } from "./tagHandlers/GtmListing/GtmListing";
 import { CommonService } from "./services/CommonService";
 import { IContext } from "./models/IContext";
 import { IProvider } from "./models/IProvider";
@@ -39,13 +38,11 @@ export class App extends Component<Props, State> implements IContext {
 
     this.root = this.props.rootDom;
 
-    //NOTE - temporary solution until i have a better di setup
+    //TODO - temporary solution until i have a better di setup
     this.loadProviders();
   }
 
   componentWillMount() {
-    //this.setState(this.state);
-    //this.init();
   }
 
   componentDidMount() {
@@ -74,14 +71,6 @@ export class App extends Component<Props, State> implements IContext {
 
   
   fasten(): void {
-    //if (this.isInitRunning) return -1;
-
-    //console.log(`Initializing ${this.constructor.name} ...`)
-    //this.isInitRunning = true;
-    //this.handlers = null; //reset the handlers
-    //this.loadHandlers();
-
-    //this.isInitRunning = false;
 
     if (window.document.project.app.constructor.name === 'App') return;
     /* expose this in the global; and do this only once*/
@@ -110,17 +99,6 @@ export class App extends Component<Props, State> implements IContext {
       console.log(`${tagHandler.tagName} dom `, e.constructor.name)
     }
   }
-
-  // private loadHandlers(): void {
-  //   this.handlers && this.handlers.constructor.name === 'Array' || (this.handlers = [])
-
-  //   const helloDom = this.root.querySelector(`${Hello.tagName} ,[${Hello.tagName}] `)
-  //   const e = render( <Hello dom={helloDom}/> , helloDom );
-  //   console.log(`hello dom `, e.constructor.name)
-  //   //TODO: specify the handlers as decorator of dependencies
-  //   this.handlers = this.handlers.concat(this.commonService.loadTagHandlers(this.root, GtmListing, this.providers, this.commonService));
-  //   this.handlers = this.handlers.concat(this.commonService.loadTagHandlers(this.root, Hello, this.providers, this.commonService));
-  // }
 
   private loadProviders(): void {
     this.providers && this.providers.constructor.name === 'Array' || (this.providers = [])
