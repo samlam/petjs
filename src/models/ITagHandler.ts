@@ -3,7 +3,6 @@ import { CommonService } from "../services/CommonService";
 
 /**
  * common ITagHandler interface with constructor requirement; 
- * constructor(public props: any, providers: IProvider[], commonSvc: CommonService, dom: Element)
  *
  * @export
  * @interface ITagHandler
