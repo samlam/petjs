@@ -1,3 +1,4 @@
+import './global'
 import { h, Component,render } from "preact";
 import { Props } from './models/Props';
 import { State } from './models/State';
@@ -7,7 +8,6 @@ import { IContext } from "./models/IContext";
 import { IProvider } from "./models/IProvider";
 import { LocalProvider } from "./providers/LocalProvider";
 import { Hello } from "./tagHandlers/Hello/Hello";
-
 
 /**
  * root component
@@ -28,6 +28,8 @@ export class App extends Component<Props, State> implements IContext {
   public services:any[] = [this.commonService];
   public session: Object;
   public page: Object;
+
+  public nodeName:any;
 
   get version(): string {
     return this.props.version;
@@ -72,11 +74,13 @@ export class App extends Component<Props, State> implements IContext {
   
   fasten(): void {
 
-    if (window.document.project.app.constructor.name === 'App') return;
+    if (window.document.project && window.document.project.app && window.document.project.app.constructor.name === 'App') return;
+    if (window.document.project){
+      (Object as any).assign(this, window.document.project.app);
+    }
     /* expose this in the global; and do this only once*/
-    (Object as any).assign(this, window.document.project.app);
+    window.document.project = window.document.project || {}
     window.document.project.app = this;
-
   }
 
   /* private methods */
@@ -96,7 +100,7 @@ export class App extends Component<Props, State> implements IContext {
         commonService={this.commonService}
         providers={this.providers}
         ref={(h)=> {this.handlers.push(h)} } /> , handlerDom );
-      console.log(`${tagHandler.tagName} dom `, e.constructor.name)
+      //console.log(`${tagHandler.tagName} dom `, e.constructor.name)
     }
   }
 

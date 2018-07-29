@@ -1,3 +1,4 @@
+import './global'
 import { h, render } from "preact";
 import { App } from "./App";
 import * as pkg from "../package.json";
@@ -5,16 +6,6 @@ import './polyfill';
 
 const version = (pkg as any).version;
 
-declare global {
-    interface Document {
-        project: {
-            app: App
-        }
-    }
-    interface Function {
-        name: string;
-    }
-}
 
 declare interface ObjectConstructor {
     assign(...objects: Object[]): Object;

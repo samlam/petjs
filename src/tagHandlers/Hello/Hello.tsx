@@ -18,8 +18,7 @@ export class Hello extends Component<Props, State> implements ITagHandler {
     public static tagName: string = 'hello';
 
     public tagName: string = Hello.tagName;
-    public tagData: any = new Object as any;
-
+    public tagData: any
 
     get id(): string {
         return this.tagData.title;
@@ -27,10 +26,15 @@ export class Hello extends Component<Props, State> implements ITagHandler {
 
     constructor(public props: any) {
         super(props);
-        
+  
+        this.tagData = {};
         CommonService.attach(this, props);
 
         this.handle();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot){
+        //   this.setState({ value: `_${value}_` })
     }
 
     componentWillMount() { }
@@ -38,7 +42,7 @@ export class Hello extends Component<Props, State> implements ITagHandler {
     componentDidMount() { }
 
     render() {
-        return (<span> {this.tagData.helloTitle} </span>)
+        return (<div>{this.tagData.helloTitle}</div>)
     }
 
     handle(): void {

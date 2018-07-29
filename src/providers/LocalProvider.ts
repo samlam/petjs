@@ -1,3 +1,4 @@
+import '../global'
 import { IProvider, IOption } from "../models/IProvider";
 import { CommonService } from "../services/CommonService";
 import { PageInfo } from "../models/PageInfo";
