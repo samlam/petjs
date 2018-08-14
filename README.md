@@ -1,6 +1,6 @@
 # petjs - teeny pet project
 
-petjs is an teeny ui starter kit created on preact + typescript. its all inclusive compact size (6k) is ideal for building reusable UI component
+petjs is a teeny ui starter kit created on preact + typescript. its all inclusive compact size (6k) is ideal for building reusable UI component
 
 ## Restore Packages
 
